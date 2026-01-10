@@ -1,7 +1,7 @@
 import request from "supertest";
 import { describe, expect, test } from "vitest";
 
-import { buildApp } from "~/app.js";
+import { buildApp } from "../../app.js";
 
 describe("/api/v1/health-check", () => {
   test("дано: запрос GET, ожидается: возврат статуса 200 с сообщением, отметкой времени и временем работы", async () => {
