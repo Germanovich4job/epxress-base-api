@@ -1,10 +1,15 @@
+import type { Express } from "express";
 import express from "express";
 
-export function buildApp() {
+import { apiV1Router } from "./routes.js";
+
+export function buildApp(): Express {
   const app = express();
 
-  // Посредник для разбора (парсинга) JSON
   app.use(express.json());
+
+  // Группируем роуты под /api/v1
+  app.use("/api/v1", apiV1Router);
 
   return app;
 }
