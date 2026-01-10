@@ -1,7 +1,11 @@
+import morgan from "morgan";
 import { buildApp } from "./app.js";
 
 const port = Number(process.env.PORT) || 3000;
 const app = buildApp();
+
+const environment = process.env.NODE_ENV || "development";
+app.use(environment === "development" ? morgan("dev") : morgan("tiny"));
 
 // Запускаем сервер и перехватываем возвращаемый экземпляр сервера
 const server = app.listen(port, () => {
