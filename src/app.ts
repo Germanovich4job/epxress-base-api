@@ -1,3 +1,4 @@
+import cookieParser from "cookie-parser";
 import type { Express } from "express";
 import express from "express";
 
@@ -7,8 +8,9 @@ export function buildApp(): Express {
   const app = express();
 
   app.use(express.json());
+  // Посредник для чтения куки, содержащихся в запросе
+  app.use(cookieParser());
 
-  // Группируем роуты под /api/v1
   app.use("/api/v1", apiV1Router);
 
   return app;
